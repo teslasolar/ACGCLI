@@ -1,0 +1,36 @@
+{
+  "name": "acg-cli",
+  "version": "1.0.0",
+  "description": "ACG Guild CLI — universal repo wrapper. Drop it in, get CLI + API + MCP.",
+  "bin": {
+    "acg": "./bin/acg.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "templates/"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "chalk": "^4.1.2",
+    "express": "^4.18.0",
+    "cors": "^2.8.5",
+    "js-yaml": "^4.1.0"
+  },
+  "keywords": [
+    "cli",
+    "acg",
+    "guild",
+    "mcp",
+    "api",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teslasolar/acgcli.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

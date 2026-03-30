@@ -1,0 +1,57 @@
+# acg.yaml — Node.js project template
+name: my-node-project
+version: 0.1.0
+description: "A Node.js project"
+author: TODO
+guild: acg
+
+runtime:
+  language: node
+  entry: src/index.js
+  port: 3000
+
+commands:
+  run:
+    cmd: "node src/index.js"
+    description: "Start the application"
+  test:
+    cmd: "npm test"
+    description: "Run test suite"
+  build:
+    cmd: "npm run build"
+    description: "Build"
+  deploy:
+    cmd: "npm run deploy"
+    description: "Deploy to production"
+    confirm: true
+  lint:
+    cmd: "eslint src/"
+    description: "Lint source code"
+  clean:
+    cmd: "rm -rf dist/ node_modules/.cache"
+    description: "Clean build artifacts"
+  dev:
+    cmd: "npm run dev"
+    description: "Start in development mode"
+
+health:
+  - name: "Node version"
+    check: "node --version"
+    expect: "v18"
+  - name: "Dependencies installed"
+    check: "npm ls --depth=0"
+
+api:
+  port: 9000
+  cors: true
+
+mcp:
+  name: my-node-project-mcp
+
+ai:
+  provider: local
+  model: phi3
+  context_files:
+    - README.md
+    - acg.yaml
+    - src/index.js

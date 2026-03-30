@@ -1,0 +1,60 @@
+# acg.yaml — Python project template
+name: my-python-project
+version: 0.1.0
+description: "A Python project"
+author: TODO
+guild: acg
+
+runtime:
+  language: python
+  entry: src/main.py
+  env_file: .env
+  port: 8080
+
+commands:
+  run:
+    cmd: "python src/main.py"
+    description: "Start the application"
+  test:
+    cmd: "pytest tests/ -v"
+    description: "Run test suite"
+  build:
+    cmd: "python -m build"
+    description: "Build distribution"
+  deploy:
+    cmd: "./scripts/deploy.sh"
+    description: "Deploy to production"
+    confirm: true
+  lint:
+    cmd: "ruff check src/"
+    description: "Lint source code"
+  clean:
+    cmd: "rm -rf dist/ build/ __pycache__/ *.egg-info"
+    description: "Clean build artifacts"
+  dev:
+    cmd: "python src/main.py --debug"
+    description: "Start in development mode"
+
+health:
+  - name: "Python version"
+    check: "python --version"
+    expect: "3.10"
+  - name: "Dependencies installed"
+    check: "pip check"
+  - name: "Tests passing"
+    check: "pytest tests/ -q"
+
+api:
+  port: 9000
+  cors: true
+
+mcp:
+  name: my-python-project-mcp
+
+ai:
+  provider: local
+  model: phi3
+  context_files:
+    - README.md
+    - acg.yaml
+    - src/main.py

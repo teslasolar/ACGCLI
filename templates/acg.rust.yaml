@@ -1,0 +1,48 @@
+# acg.yaml — Rust project template
+name: my-rust-project
+version: 0.1.0
+description: "A Rust project"
+author: TODO
+guild: acg
+
+runtime:
+  language: rust
+  entry: src/main.rs
+
+commands:
+  run:
+    cmd: "cargo run"
+    description: "Run the application"
+  test:
+    cmd: "cargo test"
+    description: "Run test suite"
+  build:
+    cmd: "cargo build --release"
+    description: "Build release binary"
+  lint:
+    cmd: "cargo clippy"
+    description: "Lint with clippy"
+  clean:
+    cmd: "cargo clean"
+    description: "Clean build artifacts"
+
+health:
+  - name: "Rust toolchain"
+    check: "rustc --version"
+  - name: "Cargo available"
+    check: "cargo --version"
+
+api:
+  port: 9000
+  cors: true
+
+mcp:
+  name: my-rust-project-mcp
+
+ai:
+  provider: local
+  model: phi3
+  context_files:
+    - README.md
+    - acg.yaml
+    - src/main.rs

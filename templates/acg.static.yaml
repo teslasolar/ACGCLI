@@ -1,0 +1,40 @@
+# acg.yaml — Static site template
+name: my-static-site
+version: 0.1.0
+description: "A static website"
+author: TODO
+guild: acg
+
+runtime:
+  language: static
+  entry: index.html
+  port: 8080
+
+commands:
+  run:
+    cmd: "python -m http.server 8080"
+    description: "Serve locally"
+  test:
+    cmd: "echo 'no tests configured'"
+    description: "Run tests"
+  build:
+    cmd: "echo 'static site — no build needed'"
+    description: "Build"
+  clean:
+    cmd: "rm -rf .cache"
+    description: "Clean artifacts"
+
+api:
+  port: 9000
+  cors: true
+
+mcp:
+  name: my-static-site-mcp
+
+ai:
+  provider: local
+  model: phi3
+  context_files:
+    - README.md
+    - acg.yaml
+    - index.html
