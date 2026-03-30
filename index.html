@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACG-CLI — Universal Repo Wrapper</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #1e1e2e;
+  --text: #c8c8d4;
+  --dim: #666680;
+  --accent: #7c6faa;
+  --accent2: #4a8c6f;
+  --glow: rgba(124,111,170,0.15);
+  --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+.header h1 { font-size: 1.8rem; color: #fff; letter-spacing: 0.05em; }
+.header .sub { color: var(--dim); margin-top: 0.5rem; font-size: 0.85rem; }
+.header .tagline {
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.nav a {
+  color: var(--dim);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.nav a:hover, .nav a.active {
+  color: var(--accent);
+  background: var(--glow);
+  text-decoration: none;
+}
+
+.main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+.hero-terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+.hero-terminal .prompt { color: var(--accent2); }
+.hero-terminal .cmd { color: #fff; }
+.hero-terminal .comment { color: var(--dim); }
+.hero-terminal .output { color: var(--dim); }
+.hero-terminal div { margin: 0.2rem 0; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+  display: block;
+}
+.card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+}
+.card h3 { color: #fff; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.card p { color: var(--dim); font-size: 0.8rem; }
+.card .tag {
+  display: inline-block;
+  background: var(--glow);
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  margin-top: 0.75rem;
+}
+
+.section { margin: 3rem 0; }
+.section h2 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.install-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+.install-block code {
+  color: #fff;
+  font-size: 0.85rem;
+}
+.install-block .label {
+  color: var(--dim);
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  font-size: 0.8rem;
+}
+.flow .step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #fff;
+}
+.flow .arrow { color: var(--dim); }
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--dim);
+  font-size: 0.75rem;
+  margin-top: 4rem;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ACG-CLI</h1>
+  <div class="sub">The Universal Repo Wrapper</div>
+  <div class="tagline">Drop It In &middot; Get CLI + API + MCP &middot; Done</div>
+</div>
+
+<nav class="nav">
+  <a href="index.html" class="active">Home</a>
+  <a href="pages/cli.html">CLI</a>
+  <a href="pages/api.html">API</a>
+  <a href="pages/mcp.html">MCP</a>
+  <a href="pages/config.html">Config</a>
+  <a href="pages/ai.html">AI</a>
+  <a href="pages/install.html">Install</a>
+</nav>
+
+<div class="main">
+
+  <div class="hero-terminal">
+    <div><span class="prompt">$</span> <span class="cmd">npm install -g acg-cli</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">cd my-project</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg init</span></div>
+    <div><span class="output">&hamilt; Created acg.yaml for my-project (python)</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg run</span> <span class="comment"># start the thing</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg test</span> <span class="comment"># test the thing</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg api start</span> <span class="comment"># expose as HTTP API</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg mcp start</span> <span class="comment"># expose as MCP tools</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">acg ai "explain this repo"</span> <span class="comment"># ask AI</span></div>
+  </div>
+
+  <div class="flow">
+    <div class="step">acg.yaml</div>
+    <div class="arrow">&rarr;</div>
+    <div class="step">CLI</div>
+    <div class="arrow">+</div>
+    <div class="step">API</div>
+    <div class="arrow">+</div>
+    <div class="step">MCP</div>
+  </div>
+
+  <div class="section">
+    <h2>Three Interfaces, One Config</h2>
+    <div class="cards">
+      <a class="card" href="pages/cli.html">
+        <h3>CLI Layer</h3>
+        <p>acg run / test / build / deploy / lint / clean / dev — every repo, same commands</p>
+        <span class="tag">commands</span>
+      </a>
+      <a class="card" href="pages/api.html">
+        <h3>API Layer</h3>
+        <p>Auto-generated REST endpoints from your acg.yaml commands. POST /run, POST /test, GET /status</p>
+        <span class="tag">http</span>
+      </a>
+      <a class="card" href="pages/mcp.html">
+        <h3>MCP Layer</h3>
+        <p>Auto-generated MCP tools for AI assistants. acg_run, acg_test, acg_read_file, acg_search</p>
+        <span class="tag">ai-tools</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>More</h2>
+    <div class="cards">
+      <a class="card" href="pages/config.html">
+        <h3>acg.yaml Reference</h3>
+        <p>Full config spec — runtime, commands, custom commands, health checks, API, MCP, AI</p>
+        <span class="tag">config</span>
+      </a>
+      <a class="card" href="pages/ai.html">
+        <h3>AI Integration</h3>
+        <p>Ask AI about your project. Supports ollama (local), Anthropic, and OpenAI</p>
+        <span class="tag">ai</span>
+      </a>
+      <a class="card" href="pages/install.html">
+        <h3>Install &amp; Quick Start</h3>
+        <p>npm install, acg init, auto-detect runtime, templates for python/node/rust/go</p>
+        <span class="tag">setup</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Supported Runtimes</h2>
+    <div class="cards">
+      <div class="card"><h3>Python</h3><p>pytest, ruff, pip, pyproject.toml</p></div>
+      <div class="card"><h3>Node.js</h3><p>npm test, eslint, package.json</p></div>
+      <div class="card"><h3>Rust</h3><p>cargo test, clippy, Cargo.toml</p></div>
+      <div class="card"><h3>Go</h3><p>go test, golangci-lint, go.mod</p></div>
+      <div class="card"><h3>Static</h3><p>http.server, index.html</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  ACG-CLI &middot; every repo speaks the same language &middot; <a href="https://github.com/teslasolar/acgcli">github</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API — ACG-CLI</title>
+<style>
+:root {
+  --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
+  --text: #c8c8d4; --dim: #666680; --accent: #7c6faa;
+  --accent2: #4a8c6f; --glow: rgba(124,111,170,0.15);
+  --mono: 'SF Mono','Fira Code','Cascadia Code',monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--mono); background:var(--bg); color:var(--text); line-height:1.6; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.nav { display:flex; justify-content:center; gap:1.5rem; padding:1rem 2rem; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.nav a { color:var(--dim); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.8rem; }
+.nav a:hover,.nav a.active { color:var(--accent); background:var(--glow); text-decoration:none; }
+.header { border-bottom:1px solid var(--border); padding:1.5rem 2rem; text-align:center; }
+.header h1 { font-size:1.4rem; color:#fff; }
+.header .sub { color:var(--dim); font-size:0.8rem; margin-top:0.3rem; }
+.main { max-width:800px; margin:0 auto; padding:2rem; }
+.section { margin:2rem 0; }
+.section h2 { color:#fff; font-size:1rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.5rem; }
+.term { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin:1rem 0; font-size:0.82rem; overflow-x:auto; }
+.term .p { color:var(--accent2); }
+.term .c { color:#fff; }
+.term .o { color:var(--dim); }
+.term div { margin:0.15rem 0; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.82rem; }
+th,td { text-align:left; padding:0.6rem 0.8rem; border-bottom:1px solid var(--border); }
+th { color:var(--dim); font-weight:normal; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }
+td code { color:#fff; background:var(--surface); padding:0.15rem 0.4rem; border-radius:3px; }
+.method { display:inline-block; padding:0.1rem 0.4rem; border-radius:3px; font-size:0.7rem; font-weight:bold; }
+.get { background:rgba(74,140,111,0.2); color:var(--accent2); }
+.post { background:rgba(124,111,170,0.2); color:var(--accent); }
+.note { background:var(--surface); border-left:3px solid var(--accent); padding:1rem; margin:1rem 0; font-size:0.8rem; border-radius:0 6px 6px 0; }
+.footer { text-align:center; padding:2rem; border-top:1px solid var(--border); color:var(--dim); font-size:0.75rem; margin-top:3rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>API Layer</h1>
+  <div class="sub">Auto-generated REST endpoints from acg.yaml</div>
+</div>
+
+<nav class="nav">
+  <a href="../index.html">Home</a>
+  <a href="cli.html">CLI</a>
+  <a href="api.html" class="active">API</a>
+  <a href="mcp.html">MCP</a>
+  <a href="config.html">Config</a>
+  <a href="ai.html">AI</a>
+  <a href="install.html">Install</a>
+</nav>
+
+<div class="main">
+
+  <div class="section">
+    <h2>Start the API Server</h2>
+    <div class="term">
+      <div><span class="p">$</span> <span class="c">acg api start</span></div>
+      <div><span class="o">&hamilt; ACG API server on :9000</span></div>
+      <div><span class="o">  GET  /status</span></div>
+      <div><span class="o">  GET  /health</span></div>
+      <div><span class="o">  GET  /config</span></div>
+      <div><span class="o">  GET  /logs</span></div>
+      <div><span class="o">  POST /run</span></div>
+      <div><span class="o">  POST /test</span></div>
+      <div><span class="o">  POST /build</span></div>
+      <div><span class="o">  POST /deploy</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Built-in Endpoints</h2>
+    <table>
+      <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+      <tr><td><span class="method get">GET</span></td><td><code>/status</code></td><td>Project name, version, status</td></tr>
+      <tr><td><span class="method get">GET</span></td><td><code>/health</code></td><td>Simple health check</td></tr>
+      <tr><td><span class="method get">GET</span></td><td><code>/config</code></td><td>Full acg.yaml config as JSON</td></tr>
+      <tr><td><span class="method get">GET</span></td><td><code>/logs</code></td><td>Recent git log (20 entries)</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Auto-generated Endpoints</h2>
+    <p style="color:var(--dim);font-size:0.82rem;margin-bottom:1rem;">Every command in <code>commands:</code> and <code>custom:</code> becomes a POST endpoint.</p>
+    <table>
+      <tr><th>Method</th><th>Path</th><th>Runs</th></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/run</code></td><td>commands.run.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/test</code></td><td>commands.test.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/build</code></td><td>commands.build.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/deploy</code></td><td>commands.deploy.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/lint</code></td><td>commands.lint.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/clean</code></td><td>commands.clean.cmd</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/{custom}</code></td><td>custom.{name}.cmd</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Response Format</h2>
+    <div class="term">
+      <div><span class="o">// Success</span></div>
+      <div><span class="c">{ "ok": true, "command": "test", "output": "..." }</span></div>
+      <div>&nbsp;</div>
+      <div><span class="o">// Failure</span></div>
+      <div><span class="c">{ "ok": false, "command": "test", "error": "..." }</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Example: curl</h2>
+    <div class="term">
+      <div><span class="p">$</span> <span class="c">curl http://localhost:9000/status</span></div>
+      <div><span class="o">{"name":"my-project","version":"1.0.0","status":"ok"}</span></div>
+      <div>&nbsp;</div>
+      <div><span class="p">$</span> <span class="c">curl -X POST http://localhost:9000/test</span></div>
+      <div><span class="o">{"ok":true,"command":"test","output":"4 passed\n"}</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Configuration</h2>
+    <div class="term">
+      <div><span class="o"># acg.yaml</span></div>
+      <div><span class="c">api:</span></div>
+      <div><span class="c">  port: 9000        </span><span class="o"># server port</span></div>
+      <div><span class="c">  cors: true        </span><span class="o"># enable CORS</span></div>
+    </div>
+  </div>
+
+  <div class="note">
+    CORS is enabled by default. The API server runs Express with JSON body parsing. All command endpoints have a 60-second timeout.
+  </div>
+
+</div>
+
+<div class="footer">
+  <a href="../index.html">&larr; back to home</a> &middot; ACG-CLI
+</div>
+
+</body>
+</html>
