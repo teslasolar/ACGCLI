@@ -1,0 +1,26 @@
+/* 📐 KONOMI:ACG-CSS-002 | tokens:~230 | scope:shared component styles */
+/* ACG-CLI GitHub Pages — cards, terminal, tables, notes */
+.section{margin:2rem 0}
+.section h2{color:#fff;font-size:1rem;margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1rem 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;display:block;transition:border-color .2s}
+.card:hover{border-color:var(--accent);text-decoration:none}
+.card h3{color:#fff;font-size:.95rem;margin-bottom:.5rem}
+.card p{color:var(--dim);font-size:.8rem}
+.card .tag{display:inline-block;background:var(--glow);color:var(--accent);padding:.15rem .5rem;border-radius:3px;font-size:.7rem;margin-top:.75rem}
+.term{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;font-size:.82rem;overflow-x:auto}
+.term div{margin:.15rem 0}
+.term .p{color:var(--accent2)} .term .c{color:#fff}
+.term .o{color:var(--dim)} .term .g{color:var(--accent2)}
+.term .k{color:var(--accent)} .term .v{color:var(--accent2)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+th{color:var(--dim);font-weight:normal;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+td code{color:#fff;background:var(--surface);padding:.15rem .4rem;border-radius:3px}
+.method{display:inline-block;padding:.1rem .4rem;border-radius:3px;font-size:.7rem;font-weight:bold}
+.get{background:rgba(74,140,111,.2);color:var(--accent2)}
+.post{background:rgba(124,111,170,.2);color:var(--accent)}
+.note{background:var(--surface);border-left:3px solid var(--accent);padding:1rem;margin:1rem 0;font-size:.8rem;border-radius:0 6px 6px 0}
+.flow{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:2rem 0;font-size:.8rem}
+.flow .step{background:var(--surface);border:1px solid var(--border);padding:.5rem 1rem;border-radius:6px;color:#fff}
+.flow .arrow{color:var(--dim)}

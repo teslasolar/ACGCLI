@@ -1,163 +1,48 @@
+<!-- 📐 KONOMI:ACG-HTM-007 | tokens:~240 | scope:install and quick start -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Install — ACG-CLI</title>
-<style>
-:root {
-  --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
-  --text: #c8c8d4; --dim: #666680; --accent: #7c6faa;
-  --accent2: #4a8c6f; --glow: rgba(124,111,170,0.15);
-  --mono: 'SF Mono','Fira Code','Cascadia Code',monospace;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:var(--mono); background:var(--bg); color:var(--text); line-height:1.6; }
-a { color:var(--accent); text-decoration:none; }
-a:hover { text-decoration:underline; }
-.nav { display:flex; justify-content:center; gap:1.5rem; padding:1rem 2rem; border-bottom:1px solid var(--border); flex-wrap:wrap; }
-.nav a { color:var(--dim); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.8rem; }
-.nav a:hover,.nav a.active { color:var(--accent); background:var(--glow); text-decoration:none; }
-.header { border-bottom:1px solid var(--border); padding:1.5rem 2rem; text-align:center; }
-.header h1 { font-size:1.4rem; color:#fff; }
-.header .sub { color:var(--dim); font-size:0.8rem; margin-top:0.3rem; }
-.main { max-width:800px; margin:0 auto; padding:2rem; }
-.section { margin:2rem 0; }
-.section h2 { color:#fff; font-size:1rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.5rem; }
-.term { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin:1rem 0; font-size:0.82rem; overflow-x:auto; }
-.term .p { color:var(--accent2); }
-.term .c { color:#fff; }
-.term .o { color:var(--dim); }
-.term .g { color:var(--accent2); }
-.term div { margin:0.15rem 0; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1rem 0; }
-.card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem; }
-.card h3 { color:#fff; font-size:0.85rem; margin-bottom:0.4rem; }
-.card p { color:var(--dim); font-size:0.78rem; }
-.note { background:var(--surface); border-left:3px solid var(--accent); padding:1rem; margin:1rem 0; font-size:0.8rem; border-radius:0 6px 6px 0; }
-.footer { text-align:center; padding:2rem; border-top:1px solid var(--border); color:var(--dim); font-size:0.75rem; margin-top:3rem; }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <h1>Install &amp; Quick Start</h1>
-  <div class="sub">Zero to running in 30 seconds</div>
-</div>
-
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../components.css">
+</head><body>
+<div class="header"><h1>Install &amp; Quick Start</h1><div class="sub">Zero to running in 30 seconds</div></div>
 <nav class="nav">
-  <a href="../index.html">Home</a>
-  <a href="cli.html">CLI</a>
-  <a href="api.html">API</a>
-  <a href="mcp.html">MCP</a>
-  <a href="config.html">Config</a>
-  <a href="ai.html">AI</a>
-  <a href="install.html" class="active">Install</a>
+  <a href="../index.html">Home</a><a href="cli.html">CLI</a>
+  <a href="api.html">API</a><a href="mcp.html">MCP</a>
+  <a href="config.html">Config</a><a href="ai.html">AI</a><a href="install.html" class="active">Install</a>
 </nav>
-
 <div class="main">
-
-  <div class="section">
-    <h2>Install</h2>
-    <div class="term">
-      <div><span class="p">$</span> <span class="c">npm install -g acg-cli</span></div>
-    </div>
-    <p style="color:var(--dim);font-size:0.82rem;">Requires Node.js 16+</p>
+  <div class="section"><h2>Install</h2>
+    <div class="term"><div><span class="p">$</span> <span class="c">npm install -g acg-cli</span></div></div>
+    <p style="color:var(--dim);font-size:.82rem">Requires Node.js 16+</p>
   </div>
-
-  <div class="section">
-    <h2>Quick Start</h2>
+  <div class="section"><h2>Quick Start</h2>
     <div class="term">
-      <div><span class="p">$</span> <span class="c">cd my-project</span></div>
-      <div><span class="p">$</span> <span class="c">acg init</span></div>
+      <div><span class="p">$</span> <span class="c">cd my-project &amp;&amp; acg init</span></div>
       <div><span class="g">&hamilt; Created acg.yaml for my-project (python)</span></div>
-      <div><span class="o">  Edit the file, then run: acg status</span></div>
-      <div>&nbsp;</div>
       <div><span class="p">$</span> <span class="c">acg status</span></div>
-      <div><span class="g">  &check; acg.yaml valid</span></div>
-      <div><span class="g">  &check; git repo</span></div>
-      <div><span class="g">  &check; commands defined</span></div>
-      <div><span class="g">  &check; runtime specified</span></div>
       <div><span class="g">  4 passed &middot; 0 failed</span></div>
-      <div>&nbsp;</div>
-      <div><span class="o"># now use it</span></div>
       <div><span class="p">$</span> <span class="c">acg run</span></div>
       <div><span class="p">$</span> <span class="c">acg test</span></div>
-      <div><span class="p">$</span> <span class="c">acg build</span></div>
     </div>
   </div>
-
-  <div class="section">
-    <h2>Auto-Detection</h2>
-    <p style="color:var(--dim);font-size:0.82rem;margin-bottom:1rem;">
-      <code>acg init</code> scans your repo root and picks the right runtime template:
-    </p>
+  <div class="section"><h2>Auto-Detection</h2>
     <div class="cards">
-      <div class="card">
-        <h3>Python</h3>
-        <p>Detected by: requirements.txt or pyproject.toml</p>
-      </div>
-      <div class="card">
-        <h3>Node.js</h3>
-        <p>Detected by: package.json</p>
-      </div>
-      <div class="card">
-        <h3>Rust</h3>
-        <p>Detected by: Cargo.toml</p>
-      </div>
-      <div class="card">
-        <h3>Go</h3>
-        <p>Detected by: go.mod</p>
-      </div>
-      <div class="card">
-        <h3>Static</h3>
-        <p>Detected by: index.html</p>
-      </div>
+      <div class="card"><h3>Python</h3><p>requirements.txt / pyproject.toml</p></div>
+      <div class="card"><h3>Node.js</h3><p>package.json</p></div>
+      <div class="card"><h3>Rust</h3><p>Cargo.toml</p></div>
+      <div class="card"><h3>Go</h3><p>go.mod</p></div>
+      <div class="card"><h3>Static</h3><p>index.html</p></div>
     </div>
   </div>
-
-  <div class="section">
-    <h2>What acg init Creates</h2>
+  <div class="section"><h2>All Three Layers</h2>
     <div class="term">
-      <div><span class="o">A single acg.yaml file with:</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c">&bull; name (from directory name)</span></div>
-      <div><span class="c">&bull; runtime (auto-detected)</span></div>
-      <div><span class="c">&bull; commands: run, test, build, deploy, lint, clean</span></div>
-      <div><span class="c">&bull; api config (port 9000)</span></div>
-      <div><span class="c">&bull; mcp config</span></div>
-      <div><span class="c">&bull; ai config (local/ollama default)</span></div>
-      <div>&nbsp;</div>
-      <div><span class="o">Edit the commands to match your actual project.</span></div>
+      <div><span class="p">$</span> <span class="c">acg run</span> <span class="o"># CLI — direct commands</span></div>
+      <div><span class="p">$</span> <span class="c">acg api start</span> <span class="o"># API — HTTP on :9000</span></div>
+      <div><span class="p">$</span> <span class="c">acg mcp start</span> <span class="o"># MCP — AI tools over stdio</span></div>
     </div>
+    <div class="note">acg init will not overwrite an existing acg.yaml. Delete it first to re-scaffold.</div>
   </div>
-
-  <div class="section">
-    <h2>Start All Three Layers</h2>
-    <div class="term">
-      <div><span class="o"># CLI — just use commands directly</span></div>
-      <div><span class="p">$</span> <span class="c">acg run</span></div>
-      <div><span class="p">$</span> <span class="c">acg test</span></div>
-      <div>&nbsp;</div>
-      <div><span class="o"># API — HTTP server</span></div>
-      <div><span class="p">$</span> <span class="c">acg api start</span></div>
-      <div><span class="g">&hamilt; ACG API server on :9000</span></div>
-      <div>&nbsp;</div>
-      <div><span class="o"># MCP — for AI assistants</span></div>
-      <div><span class="p">$</span> <span class="c">acg mcp start</span></div>
-      <div><span class="g">&hamilt; ACG MCP server running: 12 tools</span></div>
-    </div>
-  </div>
-
-  <div class="note">
-    acg init will not overwrite an existing acg.yaml. Edit it directly or delete it first to re-scaffold.
-  </div>
-
 </div>
-
-<div class="footer">
-  <a href="../index.html">&larr; back to home</a> &middot; ACG-CLI
-</div>
-
-</body>
-</html>
+<div class="footer"><a href="../index.html">&larr; home</a> &middot; ACG-CLI</div>
+</body></html>

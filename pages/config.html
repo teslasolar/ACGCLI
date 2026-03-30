@@ -1,161 +1,60 @@
+<!-- 📐 KONOMI:ACG-HTM-005 | tokens:~245 | scope:acg.yaml config reference -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Config — ACG-CLI</title>
-<style>
-:root {
-  --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
-  --text: #c8c8d4; --dim: #666680; --accent: #7c6faa;
-  --accent2: #4a8c6f; --glow: rgba(124,111,170,0.15);
-  --mono: 'SF Mono','Fira Code','Cascadia Code',monospace;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:var(--mono); background:var(--bg); color:var(--text); line-height:1.6; }
-a { color:var(--accent); text-decoration:none; }
-a:hover { text-decoration:underline; }
-.nav { display:flex; justify-content:center; gap:1.5rem; padding:1rem 2rem; border-bottom:1px solid var(--border); flex-wrap:wrap; }
-.nav a { color:var(--dim); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.8rem; }
-.nav a:hover,.nav a.active { color:var(--accent); background:var(--glow); text-decoration:none; }
-.header { border-bottom:1px solid var(--border); padding:1.5rem 2rem; text-align:center; }
-.header h1 { font-size:1.4rem; color:#fff; }
-.header .sub { color:var(--dim); font-size:0.8rem; margin-top:0.3rem; }
-.main { max-width:800px; margin:0 auto; padding:2rem; }
-.section { margin:2rem 0; }
-.section h2 { color:#fff; font-size:1rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.5rem; }
-.term { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin:1rem 0; font-size:0.78rem; overflow-x:auto; }
-.term .k { color:var(--accent); }
-.term .v { color:var(--accent2); }
-.term .c { color:var(--dim); }
-.term div { margin:0.1rem 0; }
-.footer { text-align:center; padding:2rem; border-top:1px solid var(--border); color:var(--dim); font-size:0.75rem; margin-top:3rem; }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <h1>acg.yaml Reference</h1>
-  <div class="sub">The one file that generates everything</div>
-</div>
-
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../components.css">
+</head><body>
+<div class="header"><h1>acg.yaml Reference</h1><div class="sub">The one file that generates everything</div></div>
 <nav class="nav">
-  <a href="../index.html">Home</a>
-  <a href="cli.html">CLI</a>
-  <a href="api.html">API</a>
-  <a href="mcp.html">MCP</a>
-  <a href="config.html" class="active">Config</a>
-  <a href="ai.html">AI</a>
-  <a href="install.html">Install</a>
+  <a href="../index.html">Home</a><a href="cli.html">CLI</a>
+  <a href="api.html">API</a><a href="mcp.html">MCP</a>
+  <a href="config.html" class="active">Config</a><a href="ai.html">AI</a><a href="install.html">Install</a>
 </nav>
-
 <div class="main">
-
-  <div class="section">
-    <h2>Full Example</h2>
+  <div class="section"><h2>Required Fields</h2>
     <div class="term">
-      <div><span class="c"># acg.yaml &mdash; drop this in any repo root</span></div>
-      <div>&nbsp;</div>
-      <div><span class="k">name:</span> <span class="v">my-project</span></div>
+      <div><span class="k">name:</span> <span class="v">my-project</span> <span class="o"># required</span></div>
       <div><span class="k">version:</span> <span class="v">1.0.0</span></div>
       <div><span class="k">description:</span> <span class="v">"What this repo does"</span></div>
-      <div><span class="k">author:</span> <span class="v">thomas</span></div>
-      <div><span class="k">guild:</span> <span class="v">acg</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ RUNTIME ═══</span></div>
-      <div><span class="k">runtime:</span></div>
-      <div>  <span class="k">language:</span> <span class="v">python</span>  <span class="c"># python | node | rust | go | static</span></div>
+      <div><span class="k">runtime:</span> <span class="o"># required</span></div>
+      <div>  <span class="k">language:</span> <span class="v">python</span> <span class="o"># python|node|rust|go|static</span></div>
       <div>  <span class="k">entry:</span> <span class="v">src/main.py</span></div>
-      <div>  <span class="k">env_file:</span> <span class="v">.env</span></div>
       <div>  <span class="k">port:</span> <span class="v">8080</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ COMMANDS ═══</span></div>
+      <div><span class="k">commands:</span> <span class="o"># required, at least one</span></div>
+    </div>
+  </div>
+  <div class="section"><h2>Command Properties</h2>
+    <div class="term">
       <div><span class="k">commands:</span></div>
       <div>  <span class="k">run:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"python src/main.py"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Start the application"</span></div>
-      <div>  <span class="k">test:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"pytest tests/ -v"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Run test suite"</span></div>
-      <div>  <span class="k">build:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"python -m build"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Build distribution"</span></div>
-      <div>  <span class="k">deploy:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"./scripts/deploy.sh"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Deploy to production"</span></div>
-      <div>    <span class="k">env:</span> <span class="v">production</span>  <span class="c"># sets NODE_ENV</span></div>
-      <div>    <span class="k">confirm:</span> <span class="v">true</span>  <span class="c"># requires --yes</span></div>
-      <div>  <span class="k">lint:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"ruff check src/"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Lint source code"</span></div>
-      <div>  <span class="k">clean:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"rm -rf dist/ build/ __pycache__/"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Clean build artifacts"</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ CUSTOM COMMANDS ═══</span></div>
-      <div><span class="k">custom:</span></div>
+      <div>    <span class="k">cmd:</span> <span class="v">"python src/main.py"</span> <span class="o"># shell cmd (required)</span></div>
+      <div>    <span class="k">description:</span> <span class="v">"Start the app"</span></div>
+      <div>    <span class="k">env:</span> <span class="v">production</span> <span class="o"># sets NODE_ENV</span></div>
+      <div>    <span class="k">confirm:</span> <span class="v">true</span> <span class="o"># requires --yes</span></div>
+    </div>
+  </div>
+  <div class="section"><h2>Optional Sections</h2>
+    <div class="term">
+      <div><span class="k">custom:</span> <span class="o"># extra CLI commands</span></div>
       <div>  <span class="k">crawl:</span></div>
-      <div>    <span class="k">cmd:</span> <span class="v">"python spiders/crawl.py --all"</span></div>
-      <div>    <span class="k">description:</span> <span class="v">"Run all spiders"</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ HEALTH CHECKS ═══</span></div>
-      <div><span class="k">health:</span></div>
-      <div>  - <span class="k">name:</span> <span class="v">"Python version"</span></div>
+      <div>    <span class="k">cmd:</span> <span class="v">"python spiders/crawl.py"</span></div>
+      <div><span class="k">health:</span> <span class="o"># doctor checks</span></div>
+      <div>  - <span class="k">name:</span> <span class="v">"Python"</span></div>
       <div>    <span class="k">check:</span> <span class="v">"python --version"</span></div>
       <div>    <span class="k">expect:</span> <span class="v">"3.10"</span></div>
-      <div>  - <span class="k">name:</span> <span class="v">"Tests passing"</span></div>
-      <div>    <span class="k">check:</span> <span class="v">"pytest tests/ -q"</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ API CONFIG ═══</span></div>
-      <div><span class="k">api:</span></div>
+      <div><span class="k">api:</span> <span class="o"># HTTP server config</span></div>
       <div>  <span class="k">port:</span> <span class="v">9000</span></div>
       <div>  <span class="k">cors:</span> <span class="v">true</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ MCP CONFIG ═══</span></div>
-      <div><span class="k">mcp:</span></div>
+      <div><span class="k">mcp:</span> <span class="o"># MCP server config</span></div>
       <div>  <span class="k">name:</span> <span class="v">my-project-mcp</span></div>
-      <div>  <span class="k">extra_tools:</span></div>
-      <div>    - <span class="k">name:</span> <span class="v">search_index</span></div>
-      <div>      <span class="k">description:</span> <span class="v">"Search the index"</span></div>
-      <div>      <span class="k">params:</span> <span class="v">{ query: string }</span></div>
-      <div>      <span class="k">cmd:</span> <span class="v">python scripts/search.py --query "{query}"</span></div>
-      <div>&nbsp;</div>
-      <div><span class="c"># ═══ AI CONFIG ═══</span></div>
-      <div><span class="k">ai:</span></div>
-      <div>  <span class="k">provider:</span> <span class="v">local</span>  <span class="c"># local | anthropic | openai</span></div>
+      <div>  <span class="k">extra_tools:</span> <span class="o"># additional MCP tools</span></div>
+      <div><span class="k">ai:</span> <span class="o"># AI query config</span></div>
+      <div>  <span class="k">provider:</span> <span class="v">local</span> <span class="o"># local|anthropic|openai</span></div>
       <div>  <span class="k">model:</span> <span class="v">phi3</span></div>
-      <div>  <span class="k">context_files:</span></div>
-      <div>    - <span class="v">README.md</span></div>
-      <div>    - <span class="v">acg.yaml</span></div>
+      <div>  <span class="k">context_files:</span> <span class="v">[README.md, acg.yaml]</span></div>
     </div>
   </div>
-
-  <div class="section">
-    <h2>Required Fields</h2>
-    <div class="term">
-      <div><span class="k">name:</span> <span class="c"># project name (required)</span></div>
-      <div><span class="k">runtime:</span> <span class="c"># runtime config (required)</span></div>
-      <div>  <span class="k">language:</span> <span class="c"># python | node | rust | go | static</span></div>
-      <div><span class="k">commands:</span> <span class="c"># at least one command (required)</span></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Command Properties</h2>
-    <div class="term">
-      <div><span class="k">cmd:</span> <span class="c"># shell command to run (required)</span></div>
-      <div><span class="k">description:</span> <span class="c"># human-readable description</span></div>
-      <div><span class="k">env:</span> <span class="c"># sets NODE_ENV (e.g. "production")</span></div>
-      <div><span class="k">confirm:</span> <span class="c"># true = requires --yes flag or interactive Y</span></div>
-      <div><span class="k">watch:</span> <span class="c"># glob pattern for auto-restart (future)</span></div>
-    </div>
-  </div>
-
 </div>
-
-<div class="footer">
-  <a href="../index.html">&larr; back to home</a> &middot; ACG-CLI
-</div>
-
-</body>
-</html>
+<div class="footer"><a href="../index.html">&larr; home</a> &middot; ACG-CLI</div>
+</body></html>

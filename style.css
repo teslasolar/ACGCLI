@@ -1,0 +1,21 @@
+/* 📐 KONOMI:ACG-CSS-001 | tokens:~220 | scope:shared page styles base */
+/* ACG-CLI GitHub Pages — shared stylesheet (vars + reset + layout) */
+:root {
+  --bg:#0a0a0f; --surface:#12121a; --border:#1e1e2e;
+  --text:#c8c8d4; --dim:#666680; --accent:#7c6faa;
+  --accent2:#4a8c6f; --glow:rgba(124,111,170,0.15);
+  --mono:'SF Mono','Fira Code','Cascadia Code',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.header{border-bottom:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+.header h1{font-size:1.4rem;color:#fff;letter-spacing:.05em}
+.header .sub{color:var(--dim);font-size:.8rem;margin-top:.3rem}
+.header .tagline{margin-top:1rem;color:var(--accent);font-size:.95rem}
+.nav{display:flex;justify-content:center;gap:1.5rem;padding:1rem 2rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.nav a{color:var(--dim);padding:.3rem .6rem;border-radius:4px;font-size:.8rem;transition:all .2s}
+.nav a:hover,.nav a.active{color:var(--accent);background:var(--glow);text-decoration:none}
+.main{max-width:900px;margin:0 auto;padding:2rem}
+.footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--dim);font-size:.75rem;margin-top:3rem}
